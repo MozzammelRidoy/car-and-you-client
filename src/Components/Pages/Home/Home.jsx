@@ -1,8 +1,13 @@
+import Banner from "./Banner/Banner";
+import Company from "./Company/Company";
+import NewCar from "./NewCar/NewCar";
 
 const Home = () => {
     return (
         <div>
-                <h3 className="text-5xl text-center">Home Content Here</h3>
+               <Banner/>
+               <Company/>
+               <NewCar/>
         </div>
     );
 };

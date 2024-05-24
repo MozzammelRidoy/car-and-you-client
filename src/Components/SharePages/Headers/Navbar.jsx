@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Squash as Hamburger } from "hamburger-react";
 import { GiCarWheel } from "react-icons/gi";
 import { IoCarSportSharp } from "react-icons/io5";
@@ -31,14 +31,14 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="grid grid-cols-4 gap-2 border-2  items-center py-2 md:py-6 bg-base-100">
+      <div className="grid grid-cols-4 gap-2  items-center py-2 md:py-4 bg-base-100">
         <div className="col-span-3 md:col-span-1  flex">
           <div className="">
             <div className="lg:hidden">
               <Hamburger toggled={isOpen} toggle={() => setOpen(!isOpen)} />
             </div>
             <div className={`${isOpen ? "flex absolute " : "hidden"}`}>
-              <ul className=" mt-3 z-[1] p-3 font-bold space-y-3 shadow bg-base-100 rounded-sm w-48">
+              <ul className=" mt-2  z-[2] p-3 font-bold space-y-3 shadow bg-base-100 rounded-sm w-48">
                 {navLinks}
               </ul>
             </div>
@@ -51,20 +51,24 @@ const Navbar = () => {
             </span>
           </p>
         </div>
-        <ul className="hidden md:flex justify-between font-bold md:col-span-2">
+        <ul className="hidden md:flex justify-around font-bold md:col-span-2">
           {navLinks}
         </ul>
 
         {/* midium device login or register and profile  */}
-        <div className="hidden px-2 md:flex justify-between items-center md:col-span-1">
+        <div className="hidden px-2 md:flex justify-around items-center md:col-span-1">
           <div>
-          <button className="text-white bg-red-500 btn font-semibold px-7 py-3 btn-outline rounded-md">
+          <Link to={'/login'}>
+          <button className="text-white bg-red-500 btn font-semibold px-5 py-3 btn-outline rounded-md">
             LOG-IN
           </button>
+          </Link>
           <span> Or </span>
-          <button className="text-white bg-red-500 btn font-semibold px-7 py-3 btn-outline rounded-md">
+          <Link to={'/register'}>
+          <button className="text-white bg-red-500 btn font-semibold px-5 py-3 btn-outline rounded-md">
             REGISTER
           </button>
+          </Link>
           </div>
           <div className="avatar online">
             <div className="w-12 rounded-full">
@@ -85,14 +89,17 @@ const Navbar = () => {
         </div>
       </div>
       {
-        show && <div className="absolute w-full grid text-center p-5 bg-base-100  ">
-        <button className="text-white bg-red-500 font-semibold px-7 py-3 btn hover:bg-red-900 btn-outline rounded-md">
+        show && <div className="absolute dropdown-content z-[1] w-full grid text-center p-5 bg-base-100  ">
+        <Link to={'/login'}>
+        <button className="text-white w-full bg-red-500 font-semibold px-7 py-3 btn hover:bg-red-900 btn-outline rounded-md">
           LOG-IN
-        </button>
+        </button></Link>
         <span> Or </span>
-        <button className="text-white bg-red-500 font-semibold px-7 hover:bg-red-900 py-3 btn btn-outline rounded-md">
+        <Link to={'/register'}>
+        <button className="text-white w-full bg-red-500 font-semibold px-7 hover:bg-red-900 py-3 btn btn-outline rounded-md">
           REGISTER
         </button>
+        </Link>
         </div>
       }
     </div>

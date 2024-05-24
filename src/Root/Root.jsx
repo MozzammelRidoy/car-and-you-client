@@ -6,9 +6,11 @@ import Footer from "../Components/SharePages/Footer/Footer"
 function Root() {
 
   return (
-    <div className="font-Exo-2">
+    <div className="font-Exo-2 container mx-auto">
+      <div className="min-h-screen">
       <Headers></Headers>
       <Outlet/>
+      </div>
       <Footer></Footer>
 
     </div>
