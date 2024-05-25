@@ -13,6 +13,7 @@ export default {
       backgroundImage : {
         'login-reg-img-md' : 'url("/src/assets/4.jpg")', 
         'login-reg-img-sm' : 'url("/src/assets/8.jpg")', 
+        'error-img' : 'url("/src/assets/error3.jpg")', 
       }
     },
   },

@@ -1,10 +1,11 @@
 import { TypeAnimation } from "react-type-animation";
-import img2 from "../../../../../src/assets/2.jpg"
-const Banner = () => {
+const Banner = ({loadedBannerAndHeader}) => {
+  const {banner, header} = loadedBannerAndHeader[0]; 
+
   return (
     <div className="relative aspect-video w-full overflow-hidden">
       <img
-        src={img2}
+        src={banner}
         alt="Banner"
         className="absolute inset-0 h-full w-full object-cover"
       />
@@ -13,7 +14,7 @@ const Banner = () => {
           <TypeAnimation
             sequence={[
               // Same substring at the start will only be typed once, initially
-              "We produce food for Mice",
+              `${header}`,
               1000,
               
               

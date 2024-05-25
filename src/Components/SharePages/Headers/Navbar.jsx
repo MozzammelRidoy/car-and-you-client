@@ -30,7 +30,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div>
+    <div className="container mx-auto">
       <div className="grid grid-cols-4 gap-2  items-center py-2 md:py-4 bg-base-100">
         <div className="col-span-3 md:col-span-1  flex">
           <div className="">
@@ -38,7 +38,7 @@ const Navbar = () => {
               <Hamburger toggled={isOpen} toggle={() => setOpen(!isOpen)} />
             </div>
             <div className={`${isOpen ? "flex absolute " : "hidden"}`}>
-              <ul className=" mt-2  z-[2] p-3 font-bold space-y-3 shadow bg-base-100 rounded-sm w-48">
+              <ul className=" mt-2  z-[12] p-3 font-bold space-y-3 shadow bg-base-100 rounded-sm w-48">
                 {navLinks}
               </ul>
             </div>
@@ -79,7 +79,7 @@ const Navbar = () => {
 
         {/* small device login reg and profile  */}
         <div className=" justify-self-end md:hidden">
-            <button onClick={() => setShow(!show) } className="dropdown text-4xl"><IoMdLogIn /></button>
+            <button onClick={() => setShow(!show) } className="hover:text-red-500 text-4xl"><IoMdLogIn /></button>
             <div className="avatar online hidden">
             <div className="w-12 rounded-full">
               <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
@@ -89,7 +89,7 @@ const Navbar = () => {
         </div>
       </div>
       {
-        show && <div className="absolute dropdown-content z-[1] w-full grid text-center p-5 bg-base-100  ">
+        show && <div className="absolute  z-[11] w-full grid text-center p-5 bg-base-100  ">
         <Link to={'/login'}>
         <button className="text-white w-full bg-red-500 font-semibold px-7 py-3 btn hover:bg-red-900 btn-outline rounded-md">
           LOG-IN
