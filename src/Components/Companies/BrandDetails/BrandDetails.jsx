@@ -1,24 +1,20 @@
-import image from '../../../assets/4.jpg'; 
+import { useLoaderData } from 'react-router-dom';
 const BrandDetails = () => {
-    const brandImage = [
-        {id:1, image: image},
-        {id:1, image: image},
-        {id:1, image: image},
-        {id:1, image: image},
-        {id:1, image: image},
-        {id:1, image: image},
-    ]
+    const productDetails = useLoaderData(); 
+    const {image, description,moreImages    } = productDetails; 
+
+    
         return (
         <div className="grid md:grid-cols-6 grid-cols-3 mb-6">
-           <div className="w-full aspect-video md:col-span-6 col-span-3">
-            <img className='' src={image} alt="" />
+           <div className="w-full  md:col-span-6 col-span-3">
+            <img className='w-full' src={image} alt="" />
            </div>
            {
-            brandImage.map( image =>
-            <div key={image.id}><img src={image.image} alt="" /></div>)
+            moreImages.map( (image, index) =>
+            <div key={index}><img src={image} alt="" /></div>)
            }
            <div className='col-span-3 md:col-span-6 text-justify px-2'>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem sequi cupiditate laudantium eum! Quo, molestiae? Placeat veniam tempore iure nobis nesciunt eum optio temporibus id nam laborum alias, amet nihil?</p>
+            <p><span className='font-bold'>Description : </span>{description}</p>
            </div>
           
         </div>

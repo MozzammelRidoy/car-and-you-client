@@ -1,22 +1,26 @@
-import brandImage1 from '../../../assets/tesla.jpg'; 
+import { useEffect, useState } from 'react';
 import CompaniesCard from './CompaniesCard';
 
 
-const CompaniesCards = () => {
-    const brandCollection = [
-        {id: 1, image : brandImage1 },
-        {id: 2, image : brandImage1 },
-        {id: 3, image : brandImage1 },
-        {id: 4, image : brandImage1 },
-        {id: 5, image : brandImage1 },
-        {id: 6, image : brandImage1 },
-        {id: 7, image : brandImage1 },
-    ]
+const CompaniesCards = ({name}) => {
+
+    const [companiesProducts, setCompaniesProducts] = useState([]); 
+
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/companiesProduct`)
+        .then(res => res.json())
+        .then(data => {
+          const searchCompany = data.filter(company => company.companyName.toLowerCase() === name.toLowerCase()); 
+          setCompaniesProducts(searchCompany)
+        })
+      },[name])
+   
     
     return (
         <div className='grid md:grid-cols-4 grid-cols-2 md:gap-4 gap-2 mb-10'>
             {
-                brandCollection.map(brand => <CompaniesCard key={brand.id} brand={brand}></CompaniesCard>)
+                companiesProducts.map(product => <CompaniesCard key={product._id} product={product}></CompaniesCard>)
             }
             
         </div>

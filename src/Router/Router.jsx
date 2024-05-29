@@ -16,6 +16,12 @@ import AdminLogin from "../AdminPanel/AdminLogin/AdminLogin";
 import UpdateBanner from "../AdminPanel/AdminComponents/BannerAndHeader/UpdateBanner";
 import UpdateCompaniesNameAndLogos from "../AdminPanel/AdminComponents/CompaniesName/UpdateCompaniesNameAndLogos";
 import UpdateLaunchingCar from "../AdminPanel/AdminComponents/MoreNewCar/UpdateLaunchingCar";
+import UpdateBrandSlider from "../AdminPanel/AdminComponents/BrandSlider/UpdateBrandSlider";
+import CompaniesProducts from "../AdminPanel/AdminComponents/CompaniesProducts/CompaniesProducts";
+import UpdateCompaniesProduct from "../AdminPanel/AdminComponents/CompaniesProducts/UpdateCompaniesProduct";
+import MyCart from "../Components/Pages/MyCart/MyCart";
+import PrivateRouter from "./PrivateRouter/PrivateRouter";
+import Users from "../AdminPanel/AdminComponents/Users/Users";
 
 const router = createBrowserRouter([
   {
@@ -29,12 +35,18 @@ const router = createBrowserRouter([
         loader : () => fetch(`http://localhost:5000/bannerAndHeader/`)
       }, 
       {
+        path: '/mycart',
+        element: <PrivateRouter><MyCart/></PrivateRouter>
+      },
+      {
         path: '/companies/:id',
-        element: <Companies/>
+        element: <Companies/>,
+        loader: ({params}) => fetch(`http://localhost:5000/companiesNameAndLogo/${params.id}`)
       }, 
       {
         path: '/details/:id', 
-        element: <BrandDetails/>
+        element: <PrivateRouter><BrandDetails/></PrivateRouter>,
+        loader : ({params}) => fetch(`http://localhost:5000/companiesProduct/${params.id}`)
       }
     ],
   },
@@ -45,6 +57,7 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+    
   },
   {
     path:'/admin',
@@ -83,7 +96,28 @@ const router = createBrowserRouter([
       },
       {
         path: '/admin/brandSlider', 
-        element:<BrandSlider/>
+        element:<BrandSlider/>,
+        loader: () => fetch('http://localhost:5000/brandSlider')
+      }, 
+      {
+        path: '/admin/UpdatebrandSlider/:id',
+        element: <UpdateBrandSlider/>,
+        loader: ({params}) => fetch(`http://localhost:5000/brandSlider/${params.id}`)
+      },
+      {
+        path: '/admin/companiesProducts', 
+        element:<CompaniesProducts/>,
+        loader : () => fetch('http://localhost:5000/companiesProduct')
+      }, 
+      {
+        path: '/admin/UpdateComapiesProduct/:id', 
+        element: <UpdateCompaniesProduct/>,
+        loader : ({params}) => fetch(`http://localhost:5000/companiesProduct/${params.id}`)
+      }, 
+      {
+        path: '/admin/users',
+        element: <Users/>,
+        loader : () => fetch('http://localhost:5000/users')
       }
     ]
   }, 

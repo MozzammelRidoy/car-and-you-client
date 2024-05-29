@@ -1,14 +1,52 @@
+import { useContext } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { AiFillDislike } from "react-icons/ai";
 import { MdFavorite } from "react-icons/md";
+import { AuthContext } from "../../../../Providers/AuthProviders";
+import { useNavigate } from "react-router-dom";
+import {  toast } from "react-toastify";
 
 const Car = ({ car, index }) => {
+  const {user} = useContext(AuthContext); 
+  const navigate = useNavigate(); 
+
+
   const isOdd = index % 2 !== 0;
 
   const gridPosition = isOdd
     ? "md:col-start-1 md:col-end-3"
     : "md:col-start-2 md:col-end-4";
   const aosDerection = isOdd ? "fade-left" : "fade-right";
+  const handleLike = _id => {
+    if(!user){
+      return navigate('/login')
+    }
+    console.log("liked",_id); 
+    toast.success("One More Like Added");
+
+    // others oparations
+
+  }
+  const handleDislike = _id => {
+    if(!user){
+      return navigate('/login')
+    }
+    console.log("Disliked",_id); 
+    toast.success("One More Dislike Added");
+
+    // others oparations
+
+  }
+  const handleFavorite = _id => {
+    if(!user){
+      return navigate('/login')
+    }
+    console.log("Favorite",_id); 
+     toast.success("Added Your Favorite List");
+
+    // others oparations
+
+  }
 
   return (
     <div
@@ -25,26 +63,27 @@ const Car = ({ car, index }) => {
           {car.about}
         </p>
       </div>
-      <div className=" flex justify-evenly bg-red-500 items-center">
-        <button className="flex justify-center  items-center gap-x-3 py-1 hover:bg-red-900 md:py-3 text-white w-1/2">
+      <div  className=" flex justify-evenly bg-red-500 items-center">
+        <button onClick={() => handleLike(car._id)} className="flex justify-center  items-center gap-x-3 py-1 hover:bg-red-900 md:py-3 text-white w-1/2">
           <span>
             <AiFillLike />
           </span>{" "}
           Like
         </button>
-        <button className="flex justify-center items-center gap-x-3 py-1 hover:bg-red-900 md:py-3 text-white w-1/2">
+        <button onClick={() => handleDislike(car._id)} className="flex justify-center items-center gap-x-3 py-1 hover:bg-red-900 md:py-3 text-white w-1/2">
           <span>
             <AiFillDislike />
           </span>{" "}
           Dislike
         </button>
-        <button className="flex justify-center items-center gap-x-3 py-1 hover:bg-red-900 md:py-3 text-white w-1/2">
+        <button onClick={() => handleFavorite(car._id)} className="flex justify-center items-center gap-x-3 py-1 hover:bg-red-900 md:py-3 text-white w-1/2">
           <span>
             <MdFavorite />
           </span>{" "}
           Favorite
         </button>
       </div>
+      
     </div>
   );
 };

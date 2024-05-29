@@ -89,7 +89,7 @@ const MoreNewCar = () => {
 
   return (
     <div>
-      <h3 className="text-center text-4xl my-4">Mone New Car Launching</h3>
+      <h3 className="text-center text-4xl my-4">More New Car Launching</h3>
       <div className="w-3/4 mx-auto bg-slate-100">
         <form
           onSubmit={handleMoreNewCarLaunching}

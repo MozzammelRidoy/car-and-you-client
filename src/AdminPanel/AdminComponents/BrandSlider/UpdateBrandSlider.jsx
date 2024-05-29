@@ -1,17 +1,31 @@
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const UpdateCompaniesNameAndLogos = () => {
-  const loadedNameAndLogo = useLoaderData();
-  const { _id, name, logo, details } = loadedNameAndLogo;
-  const handleCompaniesNameAndLogo = (e) => {
+const UpdateBrandSlider = () => {
+    const loadedBrandSliders = useLoaderData();
+    const { _id, companyName, slider } = loadedBrandSliders;
+
+  const [allCompaniesName, setAllCompaniesName] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/companiesNameAndLogo")
+      .then((res) => res.json())
+      .then((data) => {
+       const otherCompany = data.filter(company => company.name !== companyName)
+        setAllCompaniesName(otherCompany)});
+  }, [companyName]);
+
+  
+  const handleUpdateBrandSlider = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
-    const logo = form.logo.value;
-    const details = form.details.value;
+    const companyName = form.companyName.value;
+    const slider = form.slider.value;
 
-    if (!/^(http|https):\/\/([\w-]+(\.[\w-]+)+)(\/[\w-./?%&=]*)?$/.test(logo)) {
+    if (
+      !/^(http|https):\/\/([\w-]+(\.[\w-]+)+)(\/[\w-./?%&=]*)?$/.test(slider)
+    ) {
       Swal.fire({
         position: "center",
         icon: "error",
@@ -23,12 +37,12 @@ const UpdateCompaniesNameAndLogos = () => {
       });
       return;
     } else {
-      const companiesNameAndLogo = { name, logo, details };
+      const newSlider = { companyName, slider };
 
-      fetch(`http://localhost:5000/companiesNameAndLogo/${_id}`, {
+      fetch(`http://localhost:5000/brandSlider/${_id}`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(companiesNameAndLogo),
+        body: JSON.stringify(newSlider),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -56,60 +70,52 @@ const UpdateCompaniesNameAndLogos = () => {
         });
     }
   };
-
   return (
     <div>
-      <h2 className="text-center text-4xl my-4">
-        Update Companies Information Here
-      </h2>
+      <h2 className="text-center text-4xl my-4">Update Brand Slider Here</h2>
       <div className="w-3/4 mx-auto bg-slate-100">
         <form
-          onSubmit={handleCompaniesNameAndLogo}
+          onSubmit={handleUpdateBrandSlider}
           className="p-4 grid grid-cols-2 gap-4"
         >
           <h2 className="col-span-2 text-center font-bold text-2xl">
             Company Name & Logo
           </h2>
-          <div className="space-y-1">
+          <div className="space-y-1 ">
             <label htmlFor="companyName">Company Name</label>
-            <input
-              defaultValue={name}
-              type="text"
-              name="name"
-              className="w-full border-b outline-none p-2 "
-              placeholder="Enter Company Name"
-              id=""
+            <select
               required
-            />
+              name="companyName"
+              className="w-full py-2 outline-none"
+            >
+              <option value="">
+                Select Company Name
+              </option>
+              <option value={companyName} selected>
+                {companyName}
+              </option>
+              {allCompaniesName.map((companyName) => (
+                <option key={companyName._id} value={companyName.name}>
+                  {companyName.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="space-y-1">
-            <label htmlFor="companyName">Company Logo</label>
+            <label htmlFor="companyName">Slider</label>
             <input
-              defaultValue={logo}
+              defaultValue={slider}
               type="text"
-              name="logo"
+              name="slider"
               className="w-full border-b outline-none p-2 "
-              placeholder="Enter Company Logo URL"
-              id=""
-              required
-            />
-          </div>
-
-          <div className="space-y-1 col-span-2">
-            <label htmlFor="details">Details</label>
-            <input
-              defaultValue={details}
-              type="text"
-              name="details"
-              className="w-full border-b outline-none p-2 "
-              placeholder="Enter Company Details"
+              placeholder="Enter Car slider URL"
               id=""
               required
             />
           </div>
           <div className="col-span-2">
             <button className="w-full py-2 bg-blue-500 hover:bg-blue-900 text-white font-bold">
-              Update
+              Slider Update
             </button>
           </div>
         </form>
@@ -118,4 +124,4 @@ const UpdateCompaniesNameAndLogos = () => {
   );
 };
 
-export default UpdateCompaniesNameAndLogos;
+export default UpdateBrandSlider;

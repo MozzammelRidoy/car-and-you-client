@@ -11,6 +11,8 @@ const CompaniesName = () => {
     const form = e.target;
     const name = form.name.value;
     const logo = form.logo.value;
+    const details = form.details.value;
+
 
     if (
       nameAndLogos.find(
@@ -41,7 +43,7 @@ const CompaniesName = () => {
       });
       return;
     } else {
-      const companiesNameAndLogo = { name, logo };
+      const companiesNameAndLogo = { name, logo, details };
       console.log(companiesNameAndLogo);
 
       fetch("http://localhost:5000/companiesNameAndLogo", {
@@ -134,6 +136,17 @@ const CompaniesName = () => {
               required
             />
           </div>
+          <div className="space-y-1 col-span-2">
+            <label htmlFor="details">Details</label>
+            <input
+              type="text"
+              name="details"
+              className="w-full border-b outline-none p-2 "
+              placeholder="Enter Company Details"
+              id=""
+              required
+            />
+          </div>
           <div className="col-span-2">
             <button className="w-full py-2 bg-blue-500 hover:bg-blue-900 text-white font-bold">
               Upload
@@ -146,9 +159,12 @@ const CompaniesName = () => {
         {nameAndLogos.map((company) => (
           <div key={company._id}>
             <img src={company.logo} alt="" />{" "}
-            <button className="w-full  bg-red-500 text-white font-bold rounded-none py-1 md:py-3 border-0">
+            <p className="w-full text-center  bg-red-500 text-white font-bold rounded-none py-1 md:py-3 border-0">
               {company.name}
-            </button>
+            </p>
+            <p className="border p-1 text-justify">
+              {company.details}
+            </p>
             <div className="grid grid-cols-2">
               <Link to={`/admin/updateComapniesNameAndLogo/${company._id}`}><button className="w-full bg-blue-500 py-2 hover:bg-blue-800 text-white">
                 Edit

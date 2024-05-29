@@ -1,13 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import slide1 from '../../../assets/1.jpg'
-import slide2 from '../../../assets/2.jpg'
-import slide3 from '../../../assets/3.jpg'
-import slide4 from '../../../assets/4.jpg'
-import slide5 from '../../../assets/5.jpg'
-import slide8 from '../../../assets/8.jpg'
-
 
 
 import './styles.css';
@@ -22,21 +15,14 @@ import { useRef } from 'react';
 
 
 
-const CompaniesBanner = () => {
+const CompaniesBanner = ({brandSliders}) => {
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
     const onAutoplayTimeLeft = (s, time, progress) => {
       progressCircle.current.style.setProperty('--progress', 1 - progress);
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
-    const slideImgs = [
-        {id:1, img : slide1},
-        {id:2, img : slide2},
-        {id:3, img : slide3},
-        {id:4, img : slide4},
-        {id:5, img : slide5},
-        {id:6, img : slide8},
-    ]
+
     return (
         <div>
               <Swiper
@@ -57,7 +43,7 @@ const CompaniesBanner = () => {
       >
 
         {
-            slideImgs.map(slide => <SwiperSlide key={slide.id}><div className='aspect-video'><img src={slide.img} className='image-full' alt="" /></div></SwiperSlide> )
+            brandSliders.map(slide => <SwiperSlide key={slide._id}><div className='aspect-video'><img src={slide.slider} className='image-full' alt="" /></div></SwiperSlide> )
         }
        
         

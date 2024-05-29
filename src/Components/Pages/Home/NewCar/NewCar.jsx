@@ -22,7 +22,7 @@ const NewCar = () => {
             <div className={`grid grid-cols-1 md:grid-cols-3 gap-4`}>
                
                {
-                    cars.map((car, index) => <Car index={index+1} key={car.id} car={car}  ></Car>)
+                    cars.map((car, index) => <Car index={index+1} key={car._id} car={car}  ></Car>)
                 }
               
             </div>
