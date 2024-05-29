@@ -6,7 +6,7 @@ const ErrorPage = () => {
     const navigate = useNavigate(); 
     
     return (
-        <div className="font-Exo-2">
+        <div data-aos="zoom-in" data-aos-duration="1500" className="font-Exo-2">
             <Headers/>
                 <div className="bg-error-img flex flex-col justify-center  bg-cover bg-center min-h-screen ">
                 <div className="bg-black bg-opacity-30 p-6 md:w-1/2 md:mx-auto">
