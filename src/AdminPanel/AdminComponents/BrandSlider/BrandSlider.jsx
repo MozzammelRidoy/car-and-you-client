@@ -7,7 +7,7 @@ const BrandSlider = () => {
   const [brandSliders, setMoreCarLaunching] = useState(loadedBarndSlider);
   const [allCompaniesName, setAllCompaniesName] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/companiesNameAndLogo")
+    fetch("https://car-and-you-server.vercel.app/companiesNameAndLogo")
       .then((res) => res.json())
       .then((data) => setAllCompaniesName(data));
   }, []);
@@ -35,7 +35,7 @@ const BrandSlider = () => {
     } else {
       const newSlider = { companyName, slider };
 
-      fetch("http://localhost:5000/brandSlider", {
+      fetch("https://car-and-you-server.vercel.app/brandSlider", {
          method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(newSlider),
@@ -69,7 +69,7 @@ const BrandSlider = () => {
          confirmButtonText: "Yes, delete it!",
        }).then((result) => {
          if (result.isConfirmed) {
-           fetch(`http://localhost:5000/brandSlider/${_id}`, {
+           fetch(`https://car-and-you-server.vercel.app/brandSlider/${_id}`, {
              method: "DELETE",
            })
              .then((res) => res.json())

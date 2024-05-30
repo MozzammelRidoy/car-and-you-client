@@ -25,7 +25,7 @@ const UpdateCompaniesNameAndLogos = () => {
     } else {
       const companiesNameAndLogo = { name, logo, details };
 
-      fetch(`http://localhost:5000/companiesNameAndLogo/${_id}`, {
+      fetch(`https://car-and-you-server.vercel.app/companiesNameAndLogo/${_id}`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(companiesNameAndLogo),

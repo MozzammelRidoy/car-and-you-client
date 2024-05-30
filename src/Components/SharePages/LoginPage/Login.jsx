@@ -10,11 +10,10 @@ import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { userLogin ,githubLogin, googleLogin, forgetPassword} = useContext(AuthContext);
+  const {user, userLogin ,githubLogin, googleLogin, forgetPassword} = useContext(AuthContext);
   const [showPass, setShowPass] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const location = useLocation(); 
-  console.log(location)
 
   const navigate = useNavigate();
 
@@ -33,14 +32,13 @@ const Login = () => {
 
     userLogin(email, password)
       .then((result) => {
-        console.log(result.user)
         
         const email = result.user?.email;
 
         const lastSignInTime = result.user?.metadata?.lastSignInTime;
         const loginUserInfo = {email, lastSignInTime}
         
-        fetch("http://localhost:5000/users", {
+        fetch("https://car-and-you-server.vercel.app/users", {
               method: "PATCH",
               headers: { "content-type": "application/json" },
               body: JSON.stringify(loginUserInfo),
@@ -61,7 +59,7 @@ const Login = () => {
                 
                
               });
-              navigate(location?.state ? location.state : '/')
+            return  navigate(location?.state ? location.state : '/')
 
       })
       .catch((err) => {
@@ -93,7 +91,7 @@ const Login = () => {
       const email = result.user?.email;
       const reloadUserInfo = result.user?.reloadUserInfo;
       const newUser = { displayName, email, createdAt, creationTime , userAllInfo, reloadUserInfo, lastSignInTime};
-      fetch("http://localhost:5000/users", {
+      fetch("https://car-and-you-server.vercel.app/users", {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(newUser),
@@ -112,7 +110,7 @@ const Login = () => {
               timer: 1500,
             });
             
-            navigate(location?.state ? location.state : '/')
+          return  navigate(location?.state ? location.state : '/')
           }
         });
     })
@@ -139,7 +137,7 @@ const Login = () => {
       const email = 'github@mail.com';
       const reloadUserInfo = result.user?.reloadUserInfo;
       const newUser = { displayName, email, creationTime ,createdAt, userAllInfo, reloadUserInfo, lastSignInTime};
-      fetch("http://localhost:5000/users", {
+      fetch("https://car-and-you-server.vercel.app/users", {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(newUser),
@@ -158,7 +156,7 @@ const Login = () => {
               timer: 1500,
             });
             
-            navigate(location?.state ? location.state : '/')
+          return  navigate(location?.state ? location.state : '/')
           }
         });
     })
@@ -208,90 +206,90 @@ const Login = () => {
     
   };
   return (
-    <div data-aos="zoom-in" data-aos-duration="1500" className="font-Exo-2 container mx-auto ">
-      <div>
-        <Navbar />
-      </div>
-      <div className="flex  flex-col bg-login-reg-img-sm md:bg-login-reg-img-md bg-cover  min-h-screen md:justify-start  md:space-y-8">
-        <h2 className="md:text-4xl text-2xl text-center text-red-500  md:mt-4 mt-20 font-extrabold">
-          Log-in Here
-        </h2>
-        <div className="text-white md:p-10 p-3 space-y-3  backdrop-blur-sm md:border rounded-md   md:w-1/2 md:mx-auto bg-transparent">
-          <form onSubmit={handleLogin} className="space-y-3 ">
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                name="email"
-                
-                className="p-2 w-full bg-transparent border-b outline-none placeholder-slate-300"
-                placeholder="Enter your email"
-                required
-              />
-            </div>
-            <div className="relative">
-              <label htmlFor="name">Password</label>
-              <input
-                type={`${showPass ? "password" : "text"}`}
-                name="password"
-                
-                className="p-2 w-full bg-transparent border-b outline-none placeholder-slate-300"
-                placeholder="Set Password"
-                required
-              />
-              <span
-                onClick={() => setShowPass(!showPass)}
-                className="absolute right-2 text-2xl"
-              >
-                {showPass ? <HiLockClosed /> : <HiMiniLockOpen />}
-              </span>
-            </div>
-            <p
-              onClick={handleForgetPass}
-              className="cursor-pointer text-red-500"
-            >
-              Forgotten your password ?
-            </p>
-            {
-              errorMessage && <p className="text-red-500">{errorMessage}</p>
-            }
-            <div>
-              <button className="w-full btn-outline btn rounded-md hover:bg-red-500 text-white">
-                Log-in
-              </button>
-            </div>
-            
-          </form>
-          <div className="grid md:grid-cols-2 gap-3">
-              <button onClick={handleGoogleLogin} className=" btn btn-outline rounded-md hover:bg-red-500 text-white">
-                <span className="text-xl">
-                  <FcGoogle />
-                </span>{" "}
-                Continue With Google
-              </button>
-              <button onClick={handleGithubLogin} className=" btn btn-outline rounded-md hover:bg-red-500 text-white">
-                <span className="text-xl">
-                  <FaGithub />
-                </span>{" "}
-                Continue With Github{" "}
-              </button>
-            </div>
-          <div className="text-center  pb-4">
-            <p>
-              Don&#39;t have an Account ?{" "}
-              <Link to={"/register"}>
-                <span className="btn-link font-bold text-red-500">
-                  Register
-                </span>
-              </Link>
-            </p>
+    !user && <div data-aos="zoom-in" data-aos-duration="1500" className="font-Exo-2 container mx-auto ">
+    <div>
+      <Navbar />
+    </div>
+    <div className="flex  flex-col bg-login-reg-img-sm md:bg-login-reg-img-md bg-cover  min-h-screen md:justify-start  md:space-y-8">
+      <h2 className="md:text-4xl text-2xl text-center text-red-500  md:mt-4 mt-20 font-extrabold">
+        Log-in Here
+      </h2>
+      <div className="text-white md:p-10 p-3 space-y-3  backdrop-blur-sm md:border rounded-md   md:w-1/2 md:mx-auto bg-transparent">
+        <form onSubmit={handleLogin} className="space-y-3 ">
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              
+              className="p-2 w-full bg-transparent border-b outline-none placeholder-slate-300"
+              placeholder="Enter your email"
+              required
+            />
           </div>
+          <div className="relative">
+            <label htmlFor="name">Password</label>
+            <input
+              type={`${showPass ? "password" : "text"}`}
+              name="password"
+              
+              className="p-2 w-full bg-transparent border-b outline-none placeholder-slate-300"
+              placeholder="Set Password"
+              required
+            />
+            <span
+              onClick={() => setShowPass(!showPass)}
+              className="absolute right-2 text-2xl"
+            >
+              {showPass ? <HiLockClosed /> : <HiMiniLockOpen />}
+            </span>
+          </div>
+          <p
+            onClick={handleForgetPass}
+            className="cursor-pointer text-red-500"
+          >
+            Forgotten your password ?
+          </p>
+          {
+            errorMessage && <p className="text-red-500">{errorMessage}</p>
+          }
+          <div>
+            <button className="w-full btn-outline btn rounded-md hover:bg-red-500 text-white">
+              Log-in
+            </button>
+          </div>
+          
+        </form>
+        <div className="grid md:grid-cols-2 gap-3">
+            <button onClick={handleGoogleLogin} className=" btn btn-outline rounded-md hover:bg-red-500 text-white">
+              <span className="text-xl">
+                <FcGoogle />
+              </span>{" "}
+              Continue With Google
+            </button>
+            <button onClick={handleGithubLogin} className=" btn btn-outline rounded-md hover:bg-red-500 text-white">
+              <span className="text-xl">
+                <FaGithub />
+              </span>{" "}
+              Continue With Github{" "}
+            </button>
+          </div>
+        <div className="text-center  pb-4">
+          <p>
+            Don&#39;t have an Account ?{" "}
+            <Link to={"/register"}>
+              <span className="btn-link font-bold text-red-500">
+                Register
+              </span>
+            </Link>
+          </p>
         </div>
       </div>
-      <div className="fixed md:static bottom-0 w-full">
-        <Footer />
-      </div>
     </div>
+    <div className="fixed md:static bottom-0 w-full">
+      <Footer />
+    </div>
+  </div>
   );
 };
 

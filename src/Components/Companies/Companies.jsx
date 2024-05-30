@@ -11,7 +11,7 @@ const Companies = () => {
   
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/brandSlider`)
+    fetch(`https://car-and-you-server.vercel.app/brandSlider`)
     .then(res => res.json())
     .then(data => {
       const searchCompany = data.filter(company => company.companyName.toLowerCase() === name.toLowerCase()); 

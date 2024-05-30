@@ -4,7 +4,7 @@ import Car from "./Car";
 const NewCar = () => {
     const [cars, setCars] = useState([]); 
     useEffect(()=>{
-        fetch('http://localhost:5000/moreNewCarLaunching')
+        fetch('https://car-and-you-server.vercel.app/moreNewCarLaunching')
         .then(res => res.json())
         .then(data => {
             setCars(data); 

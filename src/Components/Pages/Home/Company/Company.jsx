@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const Company = () => {
   const [companyData, setCompanyData] = useState([])
   useEffect(()=>{
-    fetch('http://localhost:5000/companiesNameAndLogo')
+    fetch('https://car-and-you-server.vercel.app/companiesNameAndLogo')
     .then(res => res.json())
     .then(data => {
       setCompanyData(data)

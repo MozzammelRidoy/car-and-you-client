@@ -46,7 +46,7 @@ const CompaniesName = () => {
       const companiesNameAndLogo = { name, logo, details };
       console.log(companiesNameAndLogo);
 
-      fetch("http://localhost:5000/companiesNameAndLogo", {
+      fetch("https://car-and-you-server.vercel.app/companiesNameAndLogo", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(companiesNameAndLogo),
@@ -79,7 +79,7 @@ const CompaniesName = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/companiesNameAndLogo/${_id}`, {
+        fetch(`https://car-and-you-server.vercel.app/companiesNameAndLogo/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

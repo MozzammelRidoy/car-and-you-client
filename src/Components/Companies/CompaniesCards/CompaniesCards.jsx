@@ -8,7 +8,7 @@ const CompaniesCards = ({name}) => {
 
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/companiesProduct`)
+        fetch(`https://car-and-you-server.vercel.app/companiesProduct`)
         .then(res => res.json())
         .then(data => {
           const searchCompany = data.filter(company => company.companyName.toLowerCase() === name.toLowerCase()); 

@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader : () => fetch(`http://localhost:5000/bannerAndHeader/`)
+        loader : () => fetch(`https://car-and-you-server.vercel.app/bannerAndHeader/`)
       }, 
       {
         path: '/mycart',
@@ -41,12 +41,12 @@ const router = createBrowserRouter([
       {
         path: '/companies/:id',
         element: <Companies/>,
-        loader: ({params}) => fetch(`http://localhost:5000/companiesNameAndLogo/${params.id}`)
+        loader: ({params}) => fetch(`https://car-and-you-server.vercel.app/companiesNameAndLogo/${params.id}`)
       }, 
       {
         path: '/details/:id', 
         element: <PrivateRouter><BrandDetails/></PrivateRouter>,
-        loader : ({params}) => fetch(`http://localhost:5000/companiesProduct/${params.id}`)
+        loader : ({params}) => fetch(`https://car-and-you-server.vercel.app/companiesProduct/${params.id}`)
       }
     ],
   },
@@ -67,57 +67,57 @@ const router = createBrowserRouter([
       {
         path: '/admin/bannerAndHeader',
         element:<BannerAndHeader/>,
-        loader : () => fetch('http://localhost:5000/bannerAndHeader')
+        loader : () => fetch('https://car-and-you-server.vercel.app/bannerAndHeader')
       },
       {
         path:'/admin/updateBanner/:id',
         element: <UpdateBanner/>,
-        loader : ({params}) => fetch(`http://localhost:5000/bannerAndHeader/${params.id}`)
+        loader : ({params}) => fetch(`https://car-and-you-server.vercel.app/bannerAndHeader/${params.id}`)
       },
       {
         path:'/admin/companiesName',
         element: <CompaniesName/>,
-        loader : () => fetch('http://localhost:5000/companiesNameAndLogo')
+        loader : () => fetch('https://car-and-you-server.vercel.app/companiesNameAndLogo')
       }, 
       {
         path: '/admin/updateComapniesNameAndLogo/:id',
         element: <UpdateCompaniesNameAndLogos/>,
-        loader : ({params}) => fetch(`http://localhost:5000/companiesNameAndLogo/${params.id}`)
+        loader : ({params}) => fetch(`https://car-and-you-server.vercel.app/companiesNameAndLogo/${params.id}`)
       },
       {
         path: '/admin/moreNewCar',
         element:<MoreNewCar/>,
-        loader: () => fetch('http://localhost:5000/moreNewCarLaunching')
+        loader: () => fetch('https://car-and-you-server.vercel.app/moreNewCarLaunching')
       }, 
       {
         path: '/admin/UpdateLaunchingCar/:id',
         element: <UpdateLaunchingCar/>,
-        loader: ({params}) => fetch(`http://localhost:5000/moreNewCarLaunching/${params.id}`)
+        loader: ({params}) => fetch(`https://car-and-you-server.vercel.app/moreNewCarLaunching/${params.id}`)
       },
       {
         path: '/admin/brandSlider', 
         element:<BrandSlider/>,
-        loader: () => fetch('http://localhost:5000/brandSlider')
+        loader: () => fetch('https://car-and-you-server.vercel.app/brandSlider')
       }, 
       {
         path: '/admin/UpdatebrandSlider/:id',
         element: <UpdateBrandSlider/>,
-        loader: ({params}) => fetch(`http://localhost:5000/brandSlider/${params.id}`)
+        loader: ({params}) => fetch(`https://car-and-you-server.vercel.app/brandSlider/${params.id}`)
       },
       {
         path: '/admin/companiesProducts', 
         element:<CompaniesProducts/>,
-        loader : () => fetch('http://localhost:5000/companiesProduct')
+        loader : () => fetch('https://car-and-you-server.vercel.app/companiesProduct')
       }, 
       {
         path: '/admin/UpdateComapiesProduct/:id', 
         element: <UpdateCompaniesProduct/>,
-        loader : ({params}) => fetch(`http://localhost:5000/companiesProduct/${params.id}`)
+        loader : ({params}) => fetch(`https://car-and-you-server.vercel.app/companiesProduct/${params.id}`)
       }, 
       {
         path: '/admin/users',
         element: <Users/>,
-        loader : () => fetch('http://localhost:5000/users')
+        loader : () => fetch('https://car-and-you-server.vercel.app/users')
       }
     ]
   }, 

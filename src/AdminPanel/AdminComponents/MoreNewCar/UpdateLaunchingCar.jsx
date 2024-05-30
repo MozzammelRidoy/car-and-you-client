@@ -28,7 +28,7 @@ const UpdateLaunchingCar = () => {
         } else {
           const newCarLaunching = { about, image };
     
-          fetch(`http://localhost:5000/moreNewCarLaunching/${_id}`, {
+          fetch(`https://car-and-you-server.vercel.app/moreNewCarLaunching/${_id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(newCarLaunching),

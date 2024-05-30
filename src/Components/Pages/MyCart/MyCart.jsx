@@ -14,7 +14,7 @@ const MyCart = () => {
 
   useEffect(() => {
     const myCart = getStoredCartFromLS();
-    fetch("http://localhost:5000/companiesProduct")
+    fetch("https://car-and-you-server.vercel.app/companiesProduct")
       .then((res) => res.json())
       .then((data) => {
         const userCart = data.filter((item) =>

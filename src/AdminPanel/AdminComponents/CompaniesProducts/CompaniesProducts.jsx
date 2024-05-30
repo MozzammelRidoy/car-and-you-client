@@ -12,7 +12,7 @@ const CompaniesProducts = () => {
   const [inputs, setInputs] = useState([{ value: "" }]);
   const [allCompaniesName, setAllCompaniesName] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/companiesNameAndLogo")
+    fetch("https://car-and-you-server.vercel.app/companiesNameAndLogo")
       .then((res) => res.json())
       .then((data) => setAllCompaniesName(data));
   }, []);
@@ -76,7 +76,7 @@ const CompaniesProducts = () => {
       const newItem = { companyName, image, description, moreImages };
       //   console.log(newItem);
 
-      fetch("http://localhost:5000/companiesProduct", {
+      fetch("https://car-and-you-server.vercel.app/companiesProduct", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(newItem),
@@ -110,7 +110,7 @@ const CompaniesProducts = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/companiesProduct/${_id}`, {
+        fetch(`https://car-and-you-server.vercel.app/companiesProduct/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

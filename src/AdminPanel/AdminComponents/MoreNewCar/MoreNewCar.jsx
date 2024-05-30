@@ -28,7 +28,7 @@ const MoreNewCar = () => {
     } else {
       const newCarLaunching = { about, image };
 
-      fetch("http://localhost:5000/moreNewCarLaunching", {
+      fetch("https://car-and-you-server.vercel.app/moreNewCarLaunching", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(newCarLaunching),
@@ -62,7 +62,7 @@ const MoreNewCar = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/moreNewCarLaunching/${_id}`, {
+        fetch(`https://car-and-you-server.vercel.app/moreNewCarLaunching/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

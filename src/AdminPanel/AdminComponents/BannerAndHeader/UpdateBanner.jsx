@@ -15,7 +15,7 @@ const UpdateBanner = () => {
     const bannerAndHeader = {header, banner}; 
     console.log(bannerAndHeader);
 
-    fetch(`http://localhost:5000/bannerAndHeader/${_id}`, {
+    fetch(`https://car-and-you-server.vercel.app/bannerAndHeader/${_id}`, {
         method: "PUT", 
         headers: {'content-type':'application/json'},
         body: JSON.stringify(bannerAndHeader)

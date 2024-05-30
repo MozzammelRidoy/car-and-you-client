@@ -29,7 +29,7 @@ const BannerAndHeader = () => {
       });
       return;
     } else {
-      fetch("http://localhost:5000/bannerAndHeader", {
+      fetch("https://car-and-you-server.vercel.app/bannerAndHeader", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(bannerAndHeader),
@@ -62,7 +62,7 @@ const BannerAndHeader = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bannerAndHeader/${_id}`, {
+        fetch(`https://car-and-you-server.vercel.app/bannerAndHeader/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

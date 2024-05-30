@@ -13,7 +13,7 @@ const UpdateCompaniesProduct = () => {
     const [allCompaniesName, setAllCompaniesName] = useState([]);
 
     useEffect(() => {
-      fetch("http://localhost:5000/companiesNameAndLogo")
+      fetch("https://car-and-you-server.vercel.app/companiesNameAndLogo")
         .then((res) => res.json())
         .then((data) => {
          const otherCompany = data.filter(company => company.name !== companyName)
@@ -84,7 +84,7 @@ const UpdateCompaniesProduct = () => {
     } else {
       const updateItem = { companyName, image, description, moreImage };
 
-      fetch(`http://localhost:5000/companiesProduct/${_id}`, {
+      fetch(`https://car-and-you-server.vercel.app/companiesProduct/${_id}`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(updateItem),

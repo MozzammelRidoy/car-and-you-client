@@ -16,7 +16,7 @@ const User = ({user, index, users, setUsers}) => {
             confirmButtonText: "Yes, delete it!",
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/users/${_id}`, {
+              fetch(`https://car-and-you-server.vercel.app/users/${_id}`, {
                 method: "DELETE",
               })
                 .then((res) => res.json())
