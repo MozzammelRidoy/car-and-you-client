@@ -1,8 +1,9 @@
-LIVE Project Link : 
-Server Code Link : 
-Client Code Link : 
+LIVE Project Link : (firebase) https://car-and-you-67054.web.app/ 
+Server Side Code Link : https://github.com/MozzammelRidoy/car-and-you-server
+Client Side Code Link : https://github.com/MozzammelRidoy/car-and-you-client
 
 ================Client Recomend===================
+
 Our company is focused on building websites based on renowned brands. Currently, we are in search of a MERN Stack developer to develop our upcoming brand-new website.
 
 🚩 Update in requirements
@@ -34,56 +35,31 @@ Category 7: Cosmetics and Beauty
 
 Example: L'Oréal, Estée Lauder, Chanel, Dior, Urban Decay, Procter & Gamble, Revlon, Avon, Coty, etc.
 ✍️ Main Requirements
-Make sure your design and website idea is unique. First, finalize your idea (what type of website you want to build). Then google the site design or visit themeforest to get your website idea. You can visit this blog to collect free resources for your website. However, your website ❌ can not be related to your previous assignments or any demo project displayed in the course or in our conceptual sessions ❌.
+Make sure your design and website idea is unique. First, finalize your idea (what type of website you want to build). Then google the site design or visit themeforest to get your website idea. You can visit this blog to collect free resources for your website. 
 
 Home page will have a navbar, banner, footer and at least 6 types of brand names having the following information: brand imageand brand name.
 
-The navbar will have website name with logo, Home, Add Product, My Cart, and Login.
+The navbar will have website name with logo, Home, My Cart, and Login.
 
 Add two extra sections in the home page in addition to the 4 sections mentioned above.
 
-Create an Add Product page where there will be a form for the user to add a product. The form will have:
-
-Image
-Name
-Brand Name
-Type (If you choose the Technology and Electronics category ,then the types of products will be phone, computer, headphone, etc)
-Price
-Short description
-Rating
-Add button
-This will be a private/protected route.
 
 On clicking a brand will redirect the user to the page having products based on that brand. On that page, there will be a slider having at least 3 advertisement images and at least 4 products. Each product will have:
 
 Image
 Name
 Band Name
-Type (If you choose Technology and Electronics category ,then the types of products will be phone, computer, headphone, etc)
-Price
-Rating
 Details button
-Update button
-Note: Among these six brand types, one of them will not have any available products. You will have to show a relevant message on brand page to inform the users.
+My Cart
 
-Clicking on the Details button will take the user to the product detail route. Each route should display detailed information of the product. What you will include in the detailed information is entirely upto you but make sure it is relevant. Make sure to implement the Add to Cart button.
+Clicking on the Details button will take the user to the product detail route. Each route should display detailed information of the product. What you will include in the detailed information is entirely upto you but make sure it is relevant. Make sure to implement the  My Cart button.
 
 The product detail route will be a private/protected route. Please make sure that if the user is not logged in, the private route redirects to the login page.
 
-Clicking the Add to Cart button will store your product information in to the database. Inform the user with a success message using a toast/alert. Do not use the browser alert.
+Clicking the My Cart button will store your product information in to the database. Inform the user with a success message using a toast/alert. Do not use the browser alert.
 
 Create a My Cart page where a user will see all his/her added products. If the user wants, he/she can delete a product. The design is up to you. This will be a private/protected route.
 
-Clicking on the Update button will redirect the user to a form page where the form will have:
-
-Image
-Name
-Brand Name
-Type (If you choose the Technology and Electronics category ,then the types of products will be phone, computer, headphone, etc)
-Price
-Rating
-Submit button
-This will be a private/protected route.
 
 You Must implement Email and password based Authentication. This means, you will have to implement the Registration and the login page. Users should be able to toggle between Login and Registration view .
 
@@ -107,7 +83,7 @@ Once logged in, the user name, profile picture and the logout button should appe
 
 Add a 404 page (not found page)
 
-🎁 Bonus Requirements:
+More Requirements:
 Commits & readme:
 
 Minimum 10 meaningful git commits on the client-side repository.
@@ -117,21 +93,11 @@ After reloading the page of a private route, the user should not be redirected t
 
 Make the website responsive. Make sure the site looks different on desktop and mobile responsive. Tablet responsive is optional
 
-Implementing a dark/light theme toggle for the home page. It's optional to implement the theme toggle for the entire website.
 
 📜 Additional information:
 You cannot load the data from a .json file. The data must be stored in the database and you must all the data from the database.
 You can use a local or host image anywhere or use pictures from the internet. And it's ok if you have the image url, but the image link doesn't work.
 You can use vanilla CSS or any CSS library.
-Try to host your site on Firebase (Netlify hosting will need some extra configurations)
+Try to host your site on Firebase 
 Host your server-side application on Vercel. If needed, you can host somewhere else as well.
-Make Sure you deploy server-side and client-side on the first day. If you have any issues with hosting or GitHub push, please join the "Github and deploy" related support session.
-📌 What to submit
-Your github client-side repository
-Your github server-side repository
-Your live website link
-Deadline
-এই এসাইনমেন্ট মুলত তিন দিনের এসাইনমেন্ট। অর্থাৎ আগামী 20 October, রাত ১১.৫৯ এর মধ্যে তোমার এসাইনমেন্ট জমা দিলে তোমার সর্বোচ্চ মার্কস ৬০ মার্কস (৫০ এসাইনমেন্ট এর মার্কস + ১০ মার্কস বোনাস) । আর তুমি যদি এসাইনমেন্ট October 21 তারিখ সন্ধ্যা ৫.৫৯ এর মধ্যে সাবমিট করে তাহলে সর্বোচ্চ মার্কস ৫০। এর পরে সাবমিট করলে তোমার সর্বোচ্চ মার্কস ৩০।
 
-🏆 No Pain, No Gain:
-The most beautiful moments in life comes after going through hardships and challenges.
