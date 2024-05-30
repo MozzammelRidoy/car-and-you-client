@@ -4,7 +4,7 @@ Server Side Code Link : https://github.com/MozzammelRidoy/car-and-you-server
 
 Client Side Code Link : https://github.com/MozzammelRidoy/car-and-you-client
 
-================Client Recomend===================
+================Client Requirements===================
 
 Our company is focused on building websites based on renowned brands. Currently, we are in search of a MERN Stack developer to develop our upcoming brand-new website.
 
